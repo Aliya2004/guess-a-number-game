@@ -1,7 +1,3 @@
-let randomNum = Math.floor(Math.random() * 20);
-
-let attemptsLeft = 5;
-
 const input = document.querySelector('.input');
 const btn = document.querySelector('.container__btn');
 const scoreText = document.querySelector('.container__btns-score');
@@ -10,13 +6,23 @@ const attempts = document.querySelector('.container__text-attempts');
 const resetRoundBtn = document.querySelector('.refresh-round-btn');
 const resetGameBtn = document.querySelector('.refresh-game-btn');
 
+let randomNum = Math.floor(Math.random() * 20);
+
+let attemptsLeft = 5;
+
+const score = JSON.parse(localStorage.getItem('score')) || {
+  wins: 0,
+};
+
+scoreText.textContent = `Счет: ${score.wins}`;
+
 btn.addEventListener('click', () => {
   inputValue = Number(input.value);
-  if (!inputValue || isNaN(inputValue)) {
+  if (inputValue === '' || isNaN(inputValue)) {
     alert('Введите число');
     input.value = '';
-  } else if (inputValue > 20) {
-    alert('Введите число от 1 до 20');
+  } else if (inputValue > 20 || inputValue < 0) {
+    alert('Введите число от 0 до 20');
     input.value = '';
   } else {
     guessNum(inputValue);
@@ -24,6 +30,27 @@ btn.addEventListener('click', () => {
 });
 
 resetRoundBtn.addEventListener('click', resetGame);
+
+resetGameBtn.addEventListener('click', () => {
+  score.wins = 0;
+  localStorage.removeItem('score');
+  scoreText.textContent = `Счет: ${score.wins}`;
+});
+
+input.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    const inputValue = Number(input.value);
+    if (input.value === '' || isNaN(inputValue)) {
+      alert('Введите число');
+      input.value = '';
+    } else if (inputValue > 20 || inputValue < 0) {
+      alert('Введите число от 0 до 20');
+      input.value = '';
+    } else {
+      guessNum(inputValue);
+    }
+  }
+});
 
 function guessNum(playerMove) {
   attemptsLeft--;
@@ -40,6 +67,10 @@ function guessNum(playerMove) {
     btn.disabled = true;
   }
 
+  if (attempts.textContent === 'Вы выиграли') {
+    score.wins += 1;
+  }
+
   if (attemptsLeft <= 3) {
   }
 
@@ -49,7 +80,10 @@ function guessNum(playerMove) {
   }
 
   input.value = '';
-  console.log(randomNum);
+
+  localStorage.setItem('score', JSON.stringify(score));
+
+  scoreText.textContent = `Счет: ${score.wins}`;
 }
 
 function resetGame() {
