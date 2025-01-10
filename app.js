@@ -4,9 +4,11 @@ let attemptsLeft = 5;
 
 const input = document.querySelector('.input');
 const btn = document.querySelector('.container__btn');
-// const text = document.querySelector('.container__btns-score');
+const scoreText = document.querySelector('.container__btns-score');
 const clueTxt = document.querySelector('.clue');
 const attempts = document.querySelector('.container__text-attempts');
+const resetRoundBtn = document.querySelector('.refresh-round-btn');
+const resetGameBtn = document.querySelector('.refresh-game-btn');
 
 btn.addEventListener('click', () => {
   inputValue = Number(input.value);
@@ -20,6 +22,8 @@ btn.addEventListener('click', () => {
     guessNum(inputValue);
   }
 });
+
+resetRoundBtn.addEventListener('click', resetGame);
 
 function guessNum(playerMove) {
   attemptsLeft--;
@@ -46,4 +50,14 @@ function guessNum(playerMove) {
 
   input.value = '';
   console.log(randomNum);
+}
+
+function resetGame() {
+  randomNum = Math.floor(Math.random() * 20);
+  attemptsLeft = 5;
+  input.value = '';
+  clueTxt.textContent = 'Подсказка:';
+  attempts.textContent = `Осталось попыток: ${attemptsLeft}`;
+  btn.disabled = false;
+  console.log('Новое число:', randomNum);
 }
