@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="game-container">
+        <h1>Игра "угадай число"</h1>
+        <h4 class="container__text-rules">
+          Правила игры: угадайте число от 1 до 20, которое загадал компьютер
+        </h4>
+        <div class="container__text">
+          <p class="clue">Подсказка:</p>
+          <p class="container__text-attempts">Попыток осталось: 5</p>
+        </div>
+        <div class="">
+          <input class="input" type="text" placeholder="Угадайте число" />
+          <button class="container__btn">Попробовать</button>
+          <p>Счет:</p>
+          <p class="container__btns-score">0</p>
+        </div>
+      </div>
+      <div class="refresh-btns">
+        <button class="refresh-game-btn">Перезапустить игру</button>
+        <button class="refresh-round-btn">Начать заново</button>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

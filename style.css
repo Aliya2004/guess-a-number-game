@@ -1,0 +1,87 @@
+body {
+  background-color: #cdb4db;
+  margin: auto;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 1px;
+}
+
+.container {
+  width: 95%;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.game-container {
+  width: 450px;
+  height: 300px;
+  padding: 20px;
+  text-align: center;
+  background: #b5838d;
+  border-radius: 10px;
+}
+
+.container__text-rules {
+  color: #023e8a;
+}
+
+input {
+  outline: none;
+  height: 25px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+input:focus {
+  border: 1px solid #331e50;
+}
+
+.container__btn {
+  height: 29px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: #331e50;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.container__btn:hover {
+  background-color: #68449b;
+}
+
+.refresh-btns {
+  margin: 15px;
+}
+
+.refresh-game-btn,
+.refresh-round-btn {
+  height: 29px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.refresh-game-btn {
+  background-color: #9d0208;
+  color: white;
+}
+
+.refresh-game-btn:hover {
+  background-color: #cc787b;
+  color: black;
+}
+
+.refresh-round-btn {
+  background-color: #90be6d;
+}
+
+.refresh-round-btn:hover {
+  background-color: #486e2b;
+  color: white;
+}
